@@ -41,7 +41,7 @@
  * session optional        pam_mail.so nopen
  *
  *
- * $OpenPAM: su.c 938 2017-04-30 21:34:42Z des $
+ * $Linux PAM: su.c 938 2017-04-30 21:34:42Z des $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -60,10 +60,6 @@
 #include <syslog.h>
 #include <unistd.h>
 
-//#include <security/pam_appl.h>
-//#include <security/openpam.h>	/* for openpam_ttyconv() */
-
-
 # include <security/pam_appl.h>
 # include <security/pam_misc.h>
 
@@ -76,7 +72,6 @@ static const struct pam_conv conv = {
 extern char **environ;
 
 static pam_handle_t *pamh;
-//static struct pam_conv pamc;
 
 static void
 usage(void)
@@ -115,7 +110,7 @@ main(int argc, char *argv[])
 	}
 
 	/* initialize PAM */
-//	pamc.conv = &openpam_ttyconv;
+
 	pam_start("su", user, &conv, &pamh);
 
 	/* set some items */
